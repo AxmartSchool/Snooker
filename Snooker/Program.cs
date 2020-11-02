@@ -24,8 +24,36 @@ namespace Snooker
             VersenyzokSzama();
             AtlagosBevetel();
             LegjobbanKeresoKinai();
+            VanENorveg();
 
             Console.ReadKey();
+        }
+
+        private static void VanENorveg()
+        {
+            Console.Write("6. Feladat: ");
+            bool vanNorveg = false;
+            int szamlalo = 0;
+            while (!vanNorveg && szamlalo < Versenyzok.Count)
+            {
+
+                if (Versenyzok[szamlalo].Orszag.Equals("Norvégia"))
+                {
+                    vanNorveg = true;
+                }
+
+                szamlalo++;
+
+            }
+
+
+            //LINQ
+            //vanNorveg = Versenyzok.Any(x => x.Orszag.Equals("Norvégia"));
+            
+
+            Console.WriteLine($"A versenyzok kozott {(vanNorveg?"van":"nincs")} norveg versenyzo.");
+
+
         }
 
         private static void LegjobbanKeresoKinai()
