@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,45 @@ namespace Snooker
 
             VersenyzokSzama();
             AtlagosBevetel();
+            LegjobbanKeresoKinai();
 
             Console.ReadKey();
+        }
+
+        private static void LegjobbanKeresoKinai()
+        {
+
+            Console.WriteLine("5. Feladat: A legjobban kereso kinai versenyzo:");
+
+            Versenyzo legjobbanKeresoKinaiVersenyzo = null;
+            int arfolyam = 380;
+            int legnagyobbOsszeg = int.MinValue;
+
+            foreach (var v in Versenyzok)
+            {
+                
+                if (v.Orszag.Contains("Kína"))
+                {
+                    if (legnagyobbOsszeg < v.Nyeremeny)
+                    {
+                        legnagyobbOsszeg = v.Nyeremeny;
+                        legjobbanKeresoKinaiVersenyzo = v;
+                    }
+
+
+                }
+
+
+            }
+            //LINQ 
+            //legjobbanKeresoKinaiVersenyzo = Versenyzok.FindAll(x=> x.Orszag.Contains("Kína")).OrderByDescending(x => x.Nyeremeny).First();
+
+
+
+            Console.WriteLine($"\tHelyezes: {legjobbanKeresoKinaiVersenyzo.Helyezes}\n\tNev: {legjobbanKeresoKinaiVersenyzo.Nev}\n\tOrszag: {legjobbanKeresoKinaiVersenyzo.Orszag}\n\tNyeremeny osszege: {legjobbanKeresoKinaiVersenyzo.Nyeremeny*arfolyam :### ### ###} Ft");
+
+
+
         }
 
         private static void AtlagosBevetel()

@@ -19,7 +19,7 @@ namespace Snooker
 
         public static List<Versenyzo> Beolvasas()
         {
-             var sr = new StreamReader("../../snooker.txt",Encoding.UTF8);
+             var sr = new StreamReader("../../snooker.txt",encoding: Encoding.UTF8);
             sr.ReadLine();
             var output = new List<Versenyzo>();
             string[] tempTomb;
