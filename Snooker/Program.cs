@@ -25,8 +25,47 @@ namespace Snooker
             AtlagosBevetel();
             LegjobbanKeresoKinai();
             VanENorveg();
+            OrszagStatisztika();
 
             Console.ReadKey();
+        }
+
+        private static void OrszagStatisztika()
+        {
+            Console.WriteLine("7. Feladat: Statisztika");
+
+            Dictionary<string, int> Orszagok = new Dictionary<string, int>();
+
+            foreach (var v in Versenyzok)
+            {
+                if (Orszagok.ContainsKey(v.Orszag))
+                {
+                    Orszagok[v.Orszag]++;
+                }
+                else
+                {
+                    Orszagok.Add(v.Orszag, 1);
+                }
+
+
+            }
+
+            foreach (var o in Orszagok)
+            {
+                if (o.Value > 4)
+                {
+
+                    Console.WriteLine($"\t{o.Key} - {o.Value} fo");
+
+                }
+            }
+
+            //LINQ
+            //Versenyzok.GroupBy(x => x.Orszag).Select(orszag => new { nev = orszag.Key, versenyzokSzama = orszag.Count() }).Where(z=>z.versenyzokSzama > 4).ToList().ForEach(y => Console.WriteLine($"\t{y.nev} - {y.versenyzokSzama} fo") );
+
+            
+            
+
         }
 
         private static void VanENorveg()
